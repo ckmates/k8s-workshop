@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: httpd
+spec:
+  replicas: 10
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ck
+    spec:
+      containers:
+      - image: ckmates/httpd:v2
+        name: httpd
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}

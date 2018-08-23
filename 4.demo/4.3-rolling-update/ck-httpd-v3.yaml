@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: httpd
+spec:
+  replicas: 15
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ck
+    spec:
+      containers:
+      - image: ckmates/httpd:v3
+        imagePullPolicy: Always #確保拉回來的images都是最新版本,略過本機快取
+        name: httpd
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
