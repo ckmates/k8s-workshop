@@ -1,12 +1,12 @@
 # Kubernetes Dashboard
 
-**AWS Cloud9無法直接連線到localhost, 因此這邊的測試需使用本機(筆電/桌機)來當作kubectl client**
+**AWS Cloud9 無法直接連線到 localhost, 因此這邊的測試需使用本機(筆電/桌機)來當作 kubectl client**
 
--  桌機或電腦須預先安裝所需要的套件:
+-  桌機或電腦預先安裝套件:
     -  kubectl <https://kubernetes.io/docs/tasks/tools/install-kubectl/> 
     -  heptio-authenticator-aws <https://github.com/kubernetes-sigs/aws-iam-authenticator/releases>
     -  awscli <https://aws.amazon.com/tw/cli/>
-
+  
 
 ## Deploy Kubernetes Dashboard
 
