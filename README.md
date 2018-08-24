@@ -1,7 +1,7 @@
 # AWS-EKS建置流程 (使用AWS Cloud9做為IDE環境)
 
 ## 準備工作  
-- **不要使用"公司帳戶或正式環境"的 AWS 帳戶來測試**
+- **不要用"公司帳戶或正式環境"的 AWS 帳戶來測試**
 - **實作 DEMO 請選擇 AWS Region, US West (Oregon), us-west-2**
 - **使用 AWS Admin / ROOT 權限的帳戶**
 - **假設登入AWS 帳戶的 IAM 使用者為 abc, 需在該使用者的 IAM 產生 `AccessKey`**
@@ -18,7 +18,6 @@
 
 ### Cloud9 設定 AWS-CLI
 1.  先在 IAM 產生金鑰, 記下備用
-![](/img/Deploy-img/IAM-AccessKey.png)
 2.  設定`aws cli`, 輸入`aws configure`進行設定
 
 ```bash
@@ -45,8 +44,6 @@
 5.  等候`EKS面板`出現`ACTIVE`, 建立的過程 `~10min`  
 6.  找到`EKS面板`的`API server endpoint` 與 `Certificate authority`,複製起來備用  
 
-
-
 ### 設定 kubeconfig
 1.  Cloud9 初始化時, 已將空白的`config`複製到`/home/ec2-user/.kube/config`
 2.  因此可直接使用 Cloud9 來編輯`config`, 或使用`vim /home/ec2-user/.kube/config`
@@ -62,7 +59,6 @@ args:
   - "-i"
   - "< 建立EKS時的名稱 >"
 ```  
-
 5.  存檔後在終端機輸入 `kubectl config view` 看設定值是否正確傳入  
 6.  `kubectl get svc` 可測試是否能呼叫到 EKS, 如沒有問題, 應該會出現類似以下的訊息:
 
@@ -71,20 +67,20 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   7h
 ```
 
---------------------------------------------------------------------------------
-### 使用 Cloudformation 加入 Node  
+### 使用 Cloudformation 建立 Node
 
 1.  從 Cloud9 左側的欄位中找到`2.add-node`資料夾
 2.  選擇`eks-nodegroup-v2.yaml`按下右鍵選擇`Download`到電腦的桌面
-3.  回到 AWS, 選擇`Cloudformation` > `Upload a template to Amazon S3`  
-選擇剛剛下載到桌面的`eks-nodegroup-v2.yaml`進行上傳  
-4.  依序填入相關欄位  
-5.  EC2 instances 預設 `t2.medium, Spot Instances`  
-6.  完成後會開始建立Node, 過程 ~10min, 最後可以在 Cloudformation 取得`Outputs Value`  
-7.  修改`aws-auth-cm.yaml`, 空白檔案已位於`/home/ec2-user/.kube/`, 修改方式與`kubeconfig`相同
-8.  只要調整`- rolearn: <ARN of instance role (not instance profile)>`, 將之取代為`cloudformation outputs value`即可
-9.  在此目錄下`/home/ec2-user/.kube/`使用`kubectl apply -f aws-auth-cm.yaml` 讓 EKS 將 EC2-Node 加入
-10. 約30秒後, 使用 `kubectl get nodes`, 應可取得 Node, 狀態 Ready, 即完成 EKS 測試環境的建置
+3.  回到 AWS, 選擇`Cloudformation` > `Upload a template to Amazon S3`選擇剛剛下載到桌面的`eks-nodegroup-v2.yaml`進行上傳
+4.  依序 EKS 設定填入相關欄位
+5.  EC2 instances 已經預設 `t2.medium, Spot Instances`,確認後
+6.  完成後會開始建立 Node, 過程約10min, 稍待一下可在 Cloudformation 取得`Outputs Value`
+
+### 將 Node 加入 EKS 叢集
+1.  修改`aws-auth-cm.yaml`, 空白檔案已位於`/home/ec2-user/.kube/`, 修改方式與`kubeconfig`相同
+2.  只要調整`- rolearn: <ARN of instance role (not instance profile)>`, 將之取代為`cloudformation outputs value`即可
+3.  在此目錄下`/home/ec2-user/.kube/`使用`kubectl apply -f aws-auth-cm.yaml` 讓 EKS 將 EC2-Node 加入
+4.  約30秒後, 使用 `kubectl get nodes`, 應可取得 Node, 狀態 Ready, 即完成 EKS 測試環境的建置
 
 ```bash
 NAME                                         STATUS    ROLES     AGE       VERSION

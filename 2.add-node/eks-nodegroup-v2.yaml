@@ -306,7 +306,7 @@ Parameters:
   SpotFleetSize:
     Type: Number
     Description: Set your desired size of Spot Fleet
-    Default: 2  
+    Default: 0  
 
 
 
