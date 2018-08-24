@@ -4,7 +4,7 @@
 - **不要使用"公司帳戶或正式環境"的 AWS 帳戶來測試**
 - **實作 DEMO 請選擇 AWS Region, US West (Oregon), us-west-2**
 - **使用 AWS Admin / ROOT 權限的帳戶**
-- **假設登入AWS 帳戶的 IAM 使用者為 abc, 需在該使用者的 IAM 產生 `AccessKey` **
+- **假設登入AWS 帳戶的 IAM 使用者為 abc, 需在該使用者的 IAM 產生 `AccessKey`**
 - **測試完畢後務必刪除 AccessKey**
 
 ### Cloud9 的初始化設定
@@ -38,13 +38,17 @@
 1.  建立 IAM ROLE 並賦予 EKS 權限  
 ![](/img/snap_2.png)  
 ![](/img/snap_3.png)  
-參考: <https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/getting-started.html>
-2.  切換到`EC2介面`, 建立`SecurityGroup`, 名稱 `EKS-Master`, `僅允許https 443`即可
+參考: <https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/getting-started.html>  
+2.  切換到`EC2介面`, 建立`SecurityGroup`, 名稱 `EKS-Master`, `僅允許https 443`即可  
 ![](/img/Deploy-img/EC2-VPC-SG-01.png)
-3.  切換到`EC2介面`, 建立`SSH key`![](/img/Deploy-img/EC2_KeyPairs.png)
-4.  切換到`EKS面板`, 建立 `Cluster`, 依順序輸入![](/img/Deploy-img/EKS-01.png)
-5.  等候`EKS面板`出現`ACTIVE`, 建立的過程 `~10min`![](/img/Deploy-img/EKS-02.png)
-6.  找到`EKS面板`的`API server endpoint` 與 `Certificate authority`,複製起來備用![](/img/Deploy-img/EKS-03.png)
+3.  切換到`EC2介面`, 建立`SSH key`  
+![](/img/Deploy-img/EC2_KeyPairs.png)
+4.  切換到`EKS面板`, 建立 `Cluster`, 依順序輸入  
+![](/img/Deploy-img/EKS-01.png)
+5.  等候`EKS面板`出現`ACTIVE`, 建立的過程 `~10min`  
+![](/img/Deploy-img/EKS-02.png)
+6.  找到`EKS面板`的`API server endpoint` 與 `Certificate authority`,複製起來備用  
+![](/img/Deploy-img/EKS-03.png)
 
 ### 設定 kubeconfig
 1.  Cloud9 初始化時, 已將空白的`config`複製到`/home/ec2-user/.kube/config`
