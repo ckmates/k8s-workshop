@@ -31,7 +31,7 @@
 3.  設定完畢後, 可測試一下 aws cli 是否可以正常使用, `aws s3 ls`,   
     應該可以看到一些S3 Bucket輸出(沒有的話可能該帳戶沒有任何 S3 Bucket)
 
-
+--------------------------------------------------------------------------------
 ## 建立 EKS Cluster
 
 ### 建立EKS流程
@@ -40,15 +40,12 @@
 ![](/img/snap_3.png)  
 參考: <https://docs.aws.amazon.com/zh_tw/eks/latest/userguide/getting-started.html>  
 2.  切換到`EC2介面`, 建立`SecurityGroup`, 名稱 `EKS-Master`, `僅允許https 443`即可  
-![](/img/Deploy-img/EC2-VPC-SG-01.png)
 3.  切換到`EC2介面`, 建立`SSH key`  
-![](/img/Deploy-img/EC2_KeyPairs.png)
 4.  切換到`EKS面板`, 建立 `Cluster`, 依順序輸入  
-![](/img/Deploy-img/EKS-01.png)
 5.  等候`EKS面板`出現`ACTIVE`, 建立的過程 `~10min`  
-![](/img/Deploy-img/EKS-02.png)
 6.  找到`EKS面板`的`API server endpoint` 與 `Certificate authority`,複製起來備用  
-![](/img/Deploy-img/EKS-03.png)
+
+
 
 ### 設定 kubeconfig
 1.  Cloud9 初始化時, 已將空白的`config`複製到`/home/ec2-user/.kube/config`
@@ -74,6 +71,7 @@ NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   7h
 ```
 
+--------------------------------------------------------------------------------
 ### 使用 Cloudformation 加入 Node  
 
 1.  從 Cloud9 左側的欄位中找到`2.add-node`資料夾
