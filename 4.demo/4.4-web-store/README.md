@@ -20,6 +20,6 @@ $ kubectl get pod,services
 $ kubectl delete -f sock-shop-demo.yaml
 ```
 
-## 問題思考
+# 問題思考
 
 Q: 使用 `kubectl get pod,services` 為什麼看不到相關的資料?
