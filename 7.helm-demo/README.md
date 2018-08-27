@@ -1,16 +1,16 @@
 ## HELM 的基礎指令
-使用HELM與Linux套件指令類似, 可簡化在K8S上面部署與升級或是打包遞交的流程  
-這邊說明幾個常用指令:
+-  使用 HELM 與 Linux 套件指令類似, 可簡化在 K8s 部署升級或打包遞交的流程  
+-  HELM 使用的部署文件稱為 `Chart`
+-  這邊說明幾個常用指令
+    -  helm list (列出已安裝的套件)
+    -  helm install <Chart> (安裝HELM套件
+    -  helm delete <Chart> (刪除HELM套件)
+    -  helm search <Chart> (搜尋HELM套件)
 
--  helm list (列出已安裝的套件)
--  helm install <Chart> (安裝HELM套件
--  helm delete <Chart> (刪除HELM套件)
--  helm search <Chart> (搜尋HELM套件)
-
-使用這樣的方式, 便可以直接利用網路上做好的Chart來測試部署  
+使用這樣的方式, 便可以直接利用網路上做好的 Chart 來測試部署  
 
 
-## 建立自己的第一個Chart套件
+## 建立自己的第一個 Chart 套件
 
 ```bash
 # 產生一個demo的Chart套件
@@ -24,9 +24,9 @@ demo    1               Tue Aug 21 03:28:41 2018        DEPLOYED        demo-0.1
 
 ```
 
-## 刪除Chart
-```bash
+## 刪除 Chart
 
+```bash
 # 取得目前已安裝的Chart
 $ helm list 
 # 取得目前已安裝的Chart, 含以前所部署過的
@@ -39,6 +39,7 @@ $ helm delete demo --purge
 ```
 
 ## 搜尋網路上的Chart
+
 ```bash
 # 搜尋Chart, 會列出在Chart套件庫內的所有套件
 $ helm search 

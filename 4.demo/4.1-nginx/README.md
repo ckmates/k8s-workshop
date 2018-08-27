@@ -1,9 +1,9 @@
-# DEMO
+# DEMO 4.1
 
 本例說明 **kubectl 部署, 埠轉發, 修改, 刪除** 等基本的用途
 
 
-# 架構參考
+## 架構參考
 
 ![](demo-deploy-nginx1.png)
 
