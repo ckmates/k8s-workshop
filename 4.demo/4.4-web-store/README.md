@@ -1,8 +1,6 @@
-## K8S Sock-shop Demo
+# K8S Sock-shop Demo
 
-| Item | Note |
-|:---|:---|
-|4.4-web-store | 部署 Sock-Shop 網站, 含有前端, DB, WEB 走 AWS-ELB |
+部署 Sock-Shop 網站, 含有前端, 資料庫, web 透過 AWS ELB進入
 
 ## 使用方式
 
@@ -22,6 +20,6 @@ $ kubectl get pod,services
 $ kubectl delete -f sock-shop-demo.yaml
 ```
 
-## 
+## 問題思考
 
 Q: 使用 `kubectl get pod,services` 為什麼看不到相關的資料?

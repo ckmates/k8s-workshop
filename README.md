@@ -1,4 +1,4 @@
-# AWS-EKS建置流程 (使用AWS Cloud9做為IDE環境)
+# Amazon-EKS建置流程 (使用AWS Cloud9做為IDE環境)
 
 ## 準備工作  
 - **不要用"公司帳戶或正式環境"的 AWS 帳戶來測試**
@@ -30,10 +30,10 @@
 3.  設定完畢後, 可測試一下 aws cli 是否可以正常使用, `aws s3 ls`,   
     應該可以看到一些S3 Bucket輸出(沒有的話可能該帳戶沒有任何 S3 Bucket)
 
---------------------------------------------------------------------------------
-## 建立 EKS Cluster
+---
+## 建立 Amazon EKS Cluster
 
-### 建立 EKS 流程
+### 建立流程
 1.  建立 IAM ROLE 並賦予 EKS 權限  
 ![](/img/snap_2.png)  
 ![](/img/snap_3.png)  

@@ -1,11 +1,13 @@
-## kubectl 常用指令參考
+## kubectl 常用指令簡寫
 
-完成kubectl設定後, 會透過`bash completion`來幫助我們使用kubectl 指令
+完成 kubectl 設定後, 會透過`bash completion`來幫助我們使用 kubectl 指令
 無需去記所有的指令, 只需要在適當的時機使用 `--help` 來查閱指令的用法即可
 這邊列出幾個常用的指令, 更多指令與用途可到官網查詢
 <https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands>
 
-使用指令縮寫可減少打字, 建議初學仍需要瞭解整個指令較好, 查閱縮寫 `$ kubectl api-resources`
+使用指令縮寫可減少打字, 建議初學仍需瞭解整個指令意義, 查閱縮寫 `$ kubectl api-resources`
+
+## kubectl 常用指令參考
 
 -  kubectl get（取得資源）
 -  kubectl create namespace（建立 namespace）
