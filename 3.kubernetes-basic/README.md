@@ -1,13 +1,16 @@
-## kubectl 常用指令簡寫
+# kubectl CLI 與簡寫
 
-完成 kubectl 設定後, 會透過`bash completion`來幫助我們使用 kubectl 指令
-無需去記所有的指令, 只需要在適當的時機使用 `--help` 來查閱指令的用法即可
-這邊列出幾個常用的指令, 更多指令與用途可到官網查詢
-<https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands>
+完成 kubectl 設定後, 會透過 `kubectl completion` 來幫助我們使用 kubectl 指令
+無需去記所有的指令, 如要查閱指令用途, 只需要使用 `--help` 來查閱用法即可
 
-使用指令縮寫可減少打字, 建議初學仍需瞭解整個指令意義, 查閱縮寫 `$ kubectl api-resources`
+-  更多指令與用途可到官網查詢
+-  <https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands>
 
-## kubectl 常用指令參考
+-  使用指令縮寫可減少打字, 建議初學仍需瞭解整個指令意義, 
+-  查閱縮寫 `$ kubectl api-resources`
+
+
+# kubectl 常用指令參考
 
 -  kubectl get（取得資源）
 -  kubectl create namespace（建立 namespace）
@@ -16,7 +19,7 @@
 -  kubectl replace（替換資源）
 -  kubectl scale（手動擴充容器數量）
 -  kubectl edit (編輯資原)
--  kubectl expose（將資源暴露為新的 Service，可供對外存取）
+-  kubectl expose（將資源暴露為新的 Service 可供對外存取）
 -  kubectl delete（删除資源）
 -  kubectl create service（建立 Service）
 -  kubectl rolling-update（進行滾動更新）

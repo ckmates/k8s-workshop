@@ -1,4 +1,4 @@
-# Amazon-EKS建置流程 (使用AWS Cloud9做為IDE環境)
+# Amazon EKS 建置流程 (使用 AWS Cloud9 做為 IDE 環境)
 
 ## 準備工作  
 - **不要用"公司帳戶或正式環境"的 AWS 帳戶來測試**

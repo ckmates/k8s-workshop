@@ -1,4 +1,4 @@
-# DEMO 4.3
+# DEMO 4.3-rolling-update
 
 本例說明 **部署後的 Deployment rolling-update**
 
@@ -15,9 +15,9 @@
 ---
 ## 動手做
 
-### deploy ck-httpd-v1
-
 -  請注意實際演練過程中的 **NODE 節點會不同，請勿直接照抄**
+
+### 部署 ck-httpd-v1.yaml 與 svc-elb.yaml
 
 ```bash
 # deploy
@@ -27,7 +27,11 @@ deployment.extensions "httpd" created
 # deploy service with AWS-ELB
 $ kubectl apply -f svc-elb.yaml 
 service "httpd" created
+```
 
+### 取得 pod, service, 這次加上 "wide option"
+
+```bash
 # get pod , service with "wide option"
 $ kubectl get po,svc -o wide
 NAME                         READY     STATUS    RESTARTS   AGE       IP              NODE
@@ -40,15 +44,11 @@ pod/httpd-57459d95fb-x9bqw   1/1       Running   0          50s       172.31.5.1
 NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE       SELECTOR
 service/httpd        LoadBalancer   10.100.189.106   ae251c8d2a9c311e89d760a1b34f8803-1480467561.us-west-2.elb.amazonaws.com   80:31943/TCP   38s       app=ck
 service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP        4h        <none>
-
 ```
 
-
-
-### rolling-update to ck-httpd-v2
+### 更新版本 rolling-update to ck-httpd-v2
 
 ```bash
-
 # deploy ck-httpd-v2 with "flag --record"
 $ kubectl apply -f ck-httpd-v2.yaml --record 
 deployment.extensions "httpd" configured
@@ -70,18 +70,30 @@ httpd-957d5b677-b89tt    0/1       ContainerCreating   0          2s
 httpd-957d5b677-j8mh4    0/1       ContainerCreating   0          3s
 httpd-957d5b677-q7ldf    1/1       Running             0          6s
 httpd-957d5b677-xm4l9    1/1       Running             0          6s
+```
 
+### 取得更新狀態
+
+```bash
 # get rollout status
 $ kubectl rollout status deployment httpd
 deployment "httpd" successfully rolled out
+```
 
+### 取得更新歷史
+
+```bash
 # get rollout history
 $ kubectl rollout history deployment httpd 
 deployments "httpd"
 REVISION  CHANGE-CAUSE
 1         <none>
 2         kubectl apply --filename=ck-httpd-v2.yaml --record=true
+```
 
+### 回滾到之前版本
+
+```bash
 # roll-back to version 1
 $ kubectl rollout undo deployment httpd
 deployment.apps "httpd" 
@@ -105,15 +117,17 @@ httpd-957d5b677-q7ldf    1/1       Running             0          5m
 httpd-957d5b677-r8d4c    0/1       Terminating         0          4m
 httpd-957d5b677-sr6dr    0/1       Terminating         0          4m
 httpd-957d5b677-xm4l9    1/1       Running             0          5m
+```
 
+### 取得更新歷史
+
+```bash
 # get rollout history
 $ kubectl rollout history deployment httpd
 deployments "httpd"
 REVISION  CHANGE-CAUSE
 2         kubectl apply --filename=ck-httpd-v2.yaml --record=true
 3         <none>
-
-
 ```
 
 ## 測試後請刪除
@@ -124,7 +138,7 @@ $ kubectl delete -f svc-elb.yaml
 service "httpd" deleted
 
 # delete ck-httpd-v1
-$ kubectl delete -f ck-httpd-v1.yaml                                                         
+$ kubectl delete -f ck-httpd-v1.yaml
 deployment.extensions "httpd" deleted
 
 # check again
@@ -132,3 +146,10 @@ $ kubectl get svc,deploy
 NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   4h
 ```
+
+
+---
+# 問題思考
+
+1.  Q: 更新可以用 `kubectl edit` 處理嗎? 會有什麼問題?
+2.  Q: 如果版本眾多, 應如何更新到指定版本?
