@@ -3,11 +3,17 @@
 # 準備工作
 
 - **不要用"公司帳戶或正式環境"的 AWS 帳戶來測試**
-- **實作請選擇 AWS Region, US West (Oregon), us-west-2**
-- **使用 AWS Admin / ROOT 權限的帳戶**
-- **假設登入AWS 帳戶的 IAM 使用者為 abc, 需在該使用者的 IAM 產生 `AccessKey`**
-- **測試完畢後務必刪除 AccessKey 與會相關的服務**
+- **實作選擇 US West (Oregon), us-west-2**
+- **使用具有 AWS Admin / ROOT 權限的帳戶**
 
+
+# 注意事項
+
+- **假設登入AWS 帳戶的 IAM 使用者為 abc, 需在該使用者的 IAM 產生 `AccessKey`**
+- **測試完畢後務必刪除 AccessKey 與相關的服務**
+
+
+---
 ### Cloud9 的初始化設定
 
 1.  Cloud9 開啟後, 於終端機貼上指令: `git clone https://github.com/ckmates/k8s-workshop.git`
