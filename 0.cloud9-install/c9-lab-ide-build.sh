@@ -4,8 +4,8 @@
 # author          @buzzsurfr
 # contributors    @buzzsurfr @dalbhanj @cloudymind
 # editor          @ckmates.com
-# modify-date     2018-08-22
-# version         0.3
+# modify-date     2018-08-28
+# version         0.4
 # ==============================================================================
 
 # Install jq
@@ -103,6 +103,9 @@ cp /home/ec2-user/environment/k8s-workshop/1.kubectl-setting/aws-auth-cm.yaml /h
 
 # update all
 sudo yum update -y
+
+# update awscli
+pip install awscli --upgrade --user
 
 clear && \
 echo "請登出Cloud9的終端介面 (CTRL+D), 再新增新的終端 (ALT+T), 讓設定值生效"
