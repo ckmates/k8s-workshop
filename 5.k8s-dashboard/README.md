@@ -7,17 +7,13 @@
 -  提供兩種版本
 -  部署方式請參考資料夾內的README
 
-|Floder Name | Note |
-|:--- | :--- |
-|aws-official | AWS 官方版本, 但無法在 Cloud9 演示 |
-|unofficial | **可以直接在 Cloud9 演示 (推薦使用)** |
-
+|Floder Name | Note | Config |
+|:--- | :--- | :--- |
+|aws-official | AWS 官方版本, 但無法在 Cloud9 演示 | **可以設定操作** |
+|unofficial | **可以直接在 Cloud9 演示 (推薦使用)** | **只能看，不能做任何操作** |
 
 
 ## 官方參考
 
 -  <https://github.com/kubernetes/dashboard>  
 -  <https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html>  
-
-
-
