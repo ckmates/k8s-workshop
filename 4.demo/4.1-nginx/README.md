@@ -79,7 +79,6 @@ $ kubectl describe po nginx-f7fbb6b58-f7qsx
 ```
 
 ```yaml
-$ kubectl describe po nginx-f7fbb6b58-f7qsx
 Name:           nginx-f7fbb6b58-f7qsx
 Namespace:      default
 Node:           ip-172-31-36-51.us-west-2.compute.internal/172.31.36.51
@@ -103,7 +102,7 @@ Containers:
 ```yaml
 spec:
   containers:
-      <!----部署的時候是 1.14.0 改成 1.15.0 看看>
+      # 部署的時候是 1.14.0 改成 1.15.0 看看
     - image: nginx:1.15.0
 ```
 
