@@ -5,18 +5,22 @@
 -  詳細資訊可以查閱 <https://kairen.github.io/2017/03/25/kubernetes/helm-quickstart/>
 
 
-## HELM 程式安裝
+## HELM 的執行檔安裝
 
-先將最新版的HELM程式拷貝到/usr/local/bin/資料夾
+先將最新版的 HELM 執行檔拷貝到 `/usr/local/bin/` 資料夾
 
 ```bash
-$ sudo cp helm /usr/local/bin/helm #copy HELM binfile
-$ helm #執行看看
+# copy HELM binfile
+$ sudo cp helm /usr/local/bin/helm 
+
+# run helm
+$ helm
 ```
 
 ## HELM 佈署到 Amazon EKS
 
 部署只需要兩條指令
+
 ```bash
 $ kubectl apply -f helm.yaml
 $ helm init --service-account=helm

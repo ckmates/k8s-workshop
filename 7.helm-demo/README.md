@@ -14,13 +14,13 @@
 ## 建立自己的第一個 Chart 套件
 
 ```bash
-# 產生一個demo的Chart套件
+# 產生一個 demo 的 Chart 套件
 $ helm create demo
 
-# 部署剛剛產生的Chart ,名稱demo
+# 部署剛剛產生的 Chart, 名稱 demo
 $ helm install --name demo demo 
 
-# 取得目前已安裝的Chart
+# 取得目前已安裝的 Chart
 $ helm list 
 NAME    REVISION        UPDATED                         STATUS          CHART           APP VERSION     NAMESPACE
 demo    1               Tue Aug 21 03:28:41 2018        DEPLOYED        demo-0.1.0      1.0             default
@@ -46,8 +46,10 @@ $ helm delete demo --purge
 
 ## 搜尋網路上的 Chart
 
+網路上有非常多的 Chart 套件, 可以幫助我們減少重構的時間
+
 ```bash
-# 搜尋Chart, 會列出在Chart套件庫內的所有套件
+# 搜尋 Chart, 會列出在 Chart 套件庫內的所有套件
 $ helm search 
 NAME                                            CHART VERSION   APP VERSION                     DESCRIPTION                                       
 coreos/alertmanager                             0.1.7           0.15.1                          Alertmanager instance created by the CoreOS Pro...
