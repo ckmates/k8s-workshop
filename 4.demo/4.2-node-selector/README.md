@@ -16,12 +16,15 @@
 
 -  比較 `nginx-v1.yaml` 與 `nginx-v2-nodeSelector.yaml` 的差異?
 
+
 ---
 ## 動手做
 
 -  請注意實際演練過程中的 **NODE 節點會不同, 請勿直接照抄**
 
+
 ### 取得 node 列表
+
 ```bash
 # get nodes
 $ kubectl get nodes
@@ -32,35 +35,37 @@ ip-172-31-46-237.us-west-2.compute.internal   Ready     <none>    1h        v1.1
 ```
 
 ### 選其中一台來標示 "env=test" 的 label
+
 ```bash
-# label node ,name "env=test"
+# add label node, name "env=test"
 $ kubectl label node ip-172-31-26-88.us-west-2.compute.internal env=test
 node "ip-172-31-26-88.us-west-2.compute.internal" labeled
 ```
 
 ### 取得 node 列表, 並用 grep 過濾關鍵字 env=test
+
 ```bash
-# get node again , and filiter env=test
+# get node again, and filiter env=test
 $ kubectl get nodes --show-labels | grep env=test
 ip-172-31-26-88.us-west-2.compute.internal    Ready     <none>    1h        v1.10.3   asgnode=true,beta.kubernetes.io/arch=amd64,beta.kubernetes.io/instance-type=t2.medium,beta.kubernetes.io/os=linux,env=test,failure-domain.beta.kubernetes.io/region=us-west-2,failure-domain.beta.kubernetes.io/zone=us-west-2b,kubernetes.io/hostname=ip-172-31-26-88.us-west-2.compute.internal
 ```
 
 ### 部署 nginx-v2-nodeSelector.yaml
+
 ```bash
 # deploy the yaml file with label  
 $ kubectl apply -f nginx-v2-nodeSelector.yaml
 deployment.apps "nginx" created
 ```
 
-
 ### 取得 pod ,這次加上 "wide option"
+
 ```bash
 # get pod with "wide option"
 $ kubectl get po -o wide
 NAME                            READY     STATUS    RESTARTS   AGE       IP              NODE
 nginx-789f57fd99-49kbh          1/1       Running   0          1h        172.31.24.95    ip-172-31-26-88.us-west-2.compute.internal
 ```
-
 
 ## 刪除 label
 
