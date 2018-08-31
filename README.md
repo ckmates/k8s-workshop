@@ -4,7 +4,7 @@
 
 - **不要用"公司帳戶或正式環境"的 AWS 帳戶來測試**
 - **實作選擇 US West (Oregon), us-west-2**
-- **使用具有 AWS Admin / ROOT 權限的帳戶**
+- **使用具有 AWS Admin 權限的帳戶**
 
 
 # 注意事項
